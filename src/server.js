@@ -4,7 +4,7 @@ const app = require('express')();
 const server = () => {
   loadExpress(app);
 
-  app.listen(9000, err => {
+  app.listen(app.get('PORT'), err => {
     if (err) {
       console.error(err.message);
       process.exit(1);
