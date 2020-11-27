@@ -5,11 +5,9 @@ const pRequest = option =>
   new Promise(resolve => {
     request.post(option, (err, response, body) => {
       if (!err && response.statusCode == 200) {
-        console.log(body);
-        resolve({ success: true, body });
-      } else {
-        resolve({ success: false, code: response.statusCode });
-      }
+        const result = JSON.parse(body);
+        resolve({ success: true, body: result.message.result.translatedText });
+      } else resolve({ success: false, code: response.statusCode });
     });
   });
 
@@ -21,7 +19,7 @@ export default {
 
     const op = {
       url: apiUrl,
-      form: { source: 'en', target: 'en', text },
+      form: { source: 'en', target: 'ko', text },
       headers: {
         'X-Naver-Client-Id': clientId,
         'X-Naver-Client-Secret': clientSecret,
