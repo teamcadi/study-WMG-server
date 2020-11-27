@@ -1,15 +1,17 @@
-const loadExpress = require('./loaders/express');
-const app = require('express')();
+import loader from './loaders';
+import express from 'express';
 
-const server = () => {
-  loadExpress(app);
+const server = async app => {
+  await loader({ app });
 
   app.listen(app.get('PORT'), err => {
     if (err) {
       console.error(err.message);
-      process.exit(1);
+      process.exit();
     } else console.log('server start');
   });
 };
 
-server();
+(async () => {
+  await server(express());
+})();

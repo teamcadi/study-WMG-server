@@ -5,20 +5,29 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx nodemon --exec babel-node src/server.js",
+    "dev": "npx nodemon src/server.js --exec babel-node --presets @babel/preset-env",
     "start": "babel-node src/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "cors": "^2.8.5",
+    "debug": "^2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.2.0",
+    "hpp": "^0.2.3",
+    "http-errors": "^1.7.2",
+    "morgan": "^1.10.0",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.8",
     "@babel/core": "^7.12.3",
     "@babel/node": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
-    "express": "^4.17.1",
-    "morgan": "^1.10.0"
-  },
-  "devDependencies": {
     "nodemon": "^2.0.6"
   }
 }
